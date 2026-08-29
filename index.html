@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero Projects | Halmo Academy</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ===== Reset & Base ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #0b0e1a;
+            color: #f0edf5;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== Scrollbar ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #12162b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #6c3ce0;
+            border-radius: 10px;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            color: #fff;
+            box-shadow: 0 8px 28px rgba(124, 58, 237, 0.35);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(124, 58, 237, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #c4b5d4;
+            border: 2px solid rgba(124, 58, 237, 0.4);
+        }
+        .btn-outline:hover {
+            border-color: #7c3aed;
+            color: #fff;
+            background: rgba(124, 58, 237, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 28px;
+        }
+
+        /* ===== Header / Nav ===== */
+        .header {
+            padding: 24px 0 16px;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.15);
+            background: rgba(11, 14, 26, 0.75);
+            backdrop-filter: blur(6px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #a78bfa, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            font-weight: 300;
+            -webkit-text-fill-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .nav-links a {
+            color: #b8aed4;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: #7c3aed;
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #fff;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            padding: 70px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -15%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid rgba(124, 58, 237, 0.25);
+            border-radius: 60px;
+            padding: 6px 22px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #a78bfa;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 7vw, 4.8rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 6px;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #a78bfa, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .sub-title {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: #b8aed4;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .hero .description {
+            max-width: 660px;
+            margin: 18px auto 0;
+            font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+            color: #c9c0dd;
+            line-height: 1.9;
+        }
+
+        /* ===== Projects Section ===== */
+        .projects {
+            padding: 70px 0 50px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        .section-title .accent {
+            color: #7c3aed;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #b8aed4;
+            font-size: 1rem;
+            margin-bottom: 48px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .project-card {
+            background: linear-gradient(145deg, #13172e, #0e1124);
+            border-radius: 24px;
+            padding: 32px 26px 28px;
+            border: 1px solid rgba(124, 58, 237, 0.12);
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #7c3aed, transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(124, 58, 237, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card .icon-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: rgba(124, 58, 237, 0.18);
+            color: #a78bfa;
+            font-size: 1.5rem;
+            margin-bottom: 18px;
+        }
+
+        .project-card h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #f0edf5;
+        }
+
+        .project-card p {
+            color: #b8aed4;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .project-card .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #a78bfa;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: gap 0.3s ease, color 0.3s ease;
+        }
+        .project-card .card-link i {
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+        .project-card .card-link:hover {
+            color: #c4b5ff;
+            gap: 12px;
+        }
+        .project-card .card-link:hover i {
+            transform: translateX(-4px);
+        }
+
+        /* ===== Vision Section ===== */
+        .vision {
+            padding: 60px 0 50px;
+            text-align: center;
+            border-top: 1px solid rgba(124, 58, 237, 0.1);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+        }
+
+        .vision h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .vision p {
+            color: #b8aed4;
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 12px;
+        }
+
+        .vision .vision-tag {
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.15);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 60px;
+            padding: 6px 28px;
+            font-weight: 600;
+            color: #a78bfa;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            padding: 50px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .footer h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #f0edf5;
+        }
+
+        .footer p {
+            color: #b8aed4;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid rgba(124, 58, 237, 0.15);
+            color: #b8aed4;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            background: #7c3aed;
+            color: #fff;
+            border-color: #7c3aed;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(124, 58, 237, 0.35);
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 12px;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+        .subscribe-form input {
+            flex: 1;
+            min-width: 180px;
+            padding: 14px 20px;
+            border-radius: 60px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            background: rgba(255, 255, 255, 0.04);
+            color: #f0edf5;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border 0.3s ease;
+        }
+        .subscribe-form input::placeholder {
+            color: #6b5f87;
+        }
+        .subscribe-form input:focus {
+            border-color: #7c3aed;
+        }
+        .subscribe-form .btn {
+            padding: 14px 32px;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            margin-top: 44px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(124, 58, 237, 0.08);
+            text-align: center;
+            color: #6b5f87;
+            font-size: 0.85rem;
+        }
+
+        /* ===== Responsive ===== */
+
+        /* Tablets & small laptops */
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .nav-links {
+                gap: 18px;
+                font-size: 0.85rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 40px 0 40px;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .project-card {
+                padding: 26px 20px 22px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .subscribe-form {
+                flex-direction: column;
+                align-items: center;
+            }
+            .subscribe-form input {
+                width: 100%;
+                min-width: unset;
+                text-align: center;
+            }
+            .subscribe-form .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .vision p {
+                padding: 0 12px;
+            }
+
+            .hero .description {
+                padding: 0 8px;
+            }
+        }
+
+        /* Small phones */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .nav-links {
+                gap: 12px;
+                font-size: 0.8rem;
+            }
+            .nav-links a {
+                padding: 4px 0;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.8rem, 10vw, 2.4rem);
+            }
+
+            .project-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .footer h4 {
+                font-size: 1rem;
+            }
+        }
+
+        /* ===== Smooth fade-in ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.7s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+        .delay-5 {
+            animation-delay: 0.5s;
+        }
+        .delay-6 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">Hero <span>Projects</span></div>
+            <nav class="nav-links">
+                <a href="#">الرئيسية</a>
+                <a href="#">مشاريعنا</a>
+                <a href="#">عن الأكاديمية</a>
+                <a href="#">تواصل</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge fade-up">✨ منصة رقمية متكاملة</div>
+
+            <p class="sub-title fade-up delay-1">مرحبا بك في</p>
+            <h1 class="fade-up delay-1">
+                <span class="highlight">Halmo Academy</span>
+            </h1>
+
+            <p class="description fade-up delay-2">
+                تضمم وتقدم تطبيقات ومحتويات رقمية ذكية تسهل التعلم. وتدعم المعرفة. وتوفر الوقت والجهد.
+            </p>
+
+            <div class="btn-group fade-up delay-3">
+                <a href="#" class="btn btn-primary">اكشف مشاريعنا</a>
+                <a href="#" class="btn btn-outline">نحن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="projects">
+        <div class="container">
+            <h2 class="section-title fade-up">
+                أهم <span class="accent">مشاريعنا</span>
+            </h2>
+            <p class="section-sub fade-up delay-1">نقدم لك حلولاً رقمية مبتكرة لتجعل حياتك أسهل وأذكى</p>
+
+            <div class="projects-grid">
+                <!-- 1 -->
+                <div class="project-card fade-up delay-1">
+                    <div class="icon-wrap"><i class="fas fa-lightbulb"></i></div>
+                    <h3>أفكار هيرو</h3>
+                    <p>أداة كافية وحلول عملية لتسهيل حياة اليومية</p>
+                    <a href="#" class="card-link">قريرا <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- 2 -->
+                <div class="project-card fade-up delay-2">
+                    <div class="icon-wrap"><i class="fas fa-tools"></i></div>
+                    <h3>أدوات هيرو Tools</h3>
+                    <p>أدوات كافية وحلول عملية لتسهيل حياة اليومية</p>
+                    <a href="#" class="card-link">قريرا <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- 3 -->
+                <div class="project-card fade-up delay-3">
+                    <div class="icon-wrap"><i class="fas fa-users"></i></div>
+                    <h3>أسرة الأكاديمية</h3>
+                    <p>دورات ومداكات تعليمية رقمية لطلاب الجامعات والاختبارات</p>
+                    <a href="#" class="card-link">قريرا <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- 4 -->
+                <div class="project-card fade-up delay-4">
+                    <div class="icon-wrap"><i class="fas fa-shield-alt"></i></div>
+                    <h3>محتوى موثوق</h3>
+                    <p>صادر من مصادر موثوقة</p>
+                    <a href="#" class="card-link">قريرا <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- 5 -->
+                <div class="project-card fade-up delay-5">
+                    <div class="icon-wrap"><i class="fas fa-moon"></i></div>
+                    <h3>سهرة الاستخدام</h3>
+                    <p>تصميم بسيط وتجربة ممتعة</p>
+                    <a href="#" class="card-link">قريرا <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- 6 -->
+                <div class="project-card fade-up delay-6">
+                    <div class="icon-wrap"><i class="fas fa-sync-alt"></i></div>
+                    <h3>متابعة في كل مكان</h3>
+                    <p>على جميع الأجهزة</p>
+                    <a href="#" class="card-link">قريرا <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VISION ===== -->
+    <section class="vision">
+        <div class="container">
+            <h2 class="fade-up">الرؤية</h2>
+            <p class="fade-up delay-1">مستقبل رقمي عربي</p>
+            <span class="vision-tag fade-up delay-2">الشركة</span>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Social -->
+                <div class="fade-up">
+                    <h4>تابعنا على متصالتنا</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- About -->
+                <div class="fade-up delay-1">
+                    <h4>عن الأكاديمية</h4>
+                    <p>نقدم محتوى رقمي ذكي يدعم المعرفة ويوفر الوقت والجهد، لنساعدك على تحقيق أهدافك التعليمية والمهنية.</p>
+                </div>
+
+                <!-- Subscribe -->
+                <div class="fade-up delay-2">
+                    <h4>كن على اطلاع دائم بكل جديد</h4>
+                    <form class="subscribe-form" action="#" method="POST">
+                        <input type="email" placeholder="بريد الكتروني" required />
+                        <button type="submit" class="btn btn-primary">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                &copy; 2026 Hero Projects &bull; Halmo Academy &bull; جميع الحقوق محفوظة
+            </div>
+        </div>
+    </footer>
+  <script>
+document.querySelector('.subscribe-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // يمنع إرسال النموذج للخادم
+
+    const input = this.querySelector('input[type="email"]');
+    const btn = this.querySelector('button');
+    const parent = this.parentElement;
+
+    if (input.value.trim() !== '') {
+        // إخفاء الحقل والزر وعرض رسالة نجاح
+        this.style.display = 'none';
+        const successMsg = document.createElement('p');
+        successMsg.style.cssText = 'color: #a78bfa; font-weight: 700; font-size: 1.1rem; padding: 12px 0;';
+        successMsg.innerHTML = '✅ تم الاشتراك بنجاح! شكراً لك.';
+        parent.appendChild(successMsg);
+    } else {
+        // تنبيه بسيط إذا كان الحقل فارغاً
+        input.style.borderColor = '#ef4444';
+        input.placeholder = 'الرجاء إدخال بريد صحيح';
+    }
+});
+</script>
+
+</body>
+</html>
